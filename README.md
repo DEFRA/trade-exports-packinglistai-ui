@@ -1,7 +1,5 @@
 # trade-exports-packinglistai-ui
-
 PoC to show how disparate data in packing lists could be structure using Azure AI
-
 ## Prerequisites
 
 - Docker
@@ -68,7 +66,7 @@ scripts/test -w
 
 ## CI pipeline
 
-This service uses the [ADP common pipeline](https://github.com/DEFRA/adp-pipeline-common)
+This service uses the ADP CI pipeline
 
 ## Licence
 
