@@ -1,0 +1,7 @@
+{{- include "adp-helm-library.container-config-map" (list . "trade-exports-packinglistai-ui.config-map") -}}
+{{- define "trade-exports-packinglistai-ui.config-map" -}}
+data:
+  NODE_ENV: {{ quote .Values.environment }}
+  PORT: {{ quote .Values.container.port }}
+  APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
+{{- end -}}

@@ -1,0 +1,10 @@
+services:
+  trade-exports-packinglistai-ui:
+    build:
+      context: .
+      target: production
+    image: trade-exports-packinglistai-ui
+    container_name: trade-exports-packinglistai-ui
+    environment:
+      APPINSIGHTS_CLOUDROLE: trade-exports-packinglistai-ui-local
+      APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}

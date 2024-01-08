@@ -1,0 +1,8 @@
+{{- include "adp-helm-library.deployment" (list . "trade-exports-packinglistai-ui.deployment") -}}
+{{- define "trade-exports-packinglistai-ui.deployment" -}}
+spec:
+  template:
+    spec:
+      containers:
+      - {{ include "adp-helm-library.container" (list . "trade-exports-packinglistai-ui.container") }}
+{{- end -}}

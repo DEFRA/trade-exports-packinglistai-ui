@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "trade-exports-packinglistai-ui"
+  description: "PoC to show how disparate data in packing lists could be structure using Azure AI"
+  annotations:
+    github.com/project-slug: Defra/trade-exports-packinglistai-ui
+spec:
+  type: frontend
+  lifecycle: alpha
+  owner: "group:default/trade-exports"
+  
