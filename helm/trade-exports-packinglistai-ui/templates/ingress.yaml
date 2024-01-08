@@ -1,0 +1,3 @@
+{{- include "adp-helm-library.azure-ingress" (list . "trade-exports-packinglistai-ui.ingress") -}}
+{{- define "trade-exports-packinglistai-ui.ingress" -}}
+{{- end -}}

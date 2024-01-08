@@ -1,10 +1,12 @@
 {
   "name": "trade-exports-packinglistai-ui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "PoC to show how disparate data in packing lists could be structure using Azure AI",
-  "homepage": "github.com?owner=Defra&repo=trade-exports-packinglistai-ui&organization=defra-adp-sandpit",
+  "homepage": "github.com?owner=defra&repo=trade-exports-packinglistai-ui&organization=defra",
   "main": "app/index.js",
   "scripts": {
+    "build": "webpack",
+    "build:watch": "webpack --watch",
     "pretest": "npm run test:lint",
     "test": "jest --runInBand --forceExit",
     "test:watch": "jest --coverage=false --onlyChanged --watch --runInBand",
@@ -18,13 +20,27 @@
   "license": "OGL-UK-3.0",
   "dependencies": {
     "@hapi/hapi": "21.3.2",
-    "applicationinsights": "2.8.0"
+    "@hapi/inert": "7.1.0",
+    "@hapi/vision": "7.0.3",
+    "applicationinsights": "2.8.0",
+    "govuk-frontend": "4.7.0",
+    "nunjucks": "3.2.4"
   },
   "devDependencies": {
     "jest": "29.7.0",
     "jest-junit": "16.0.0",
     "nodemon": "3.0.1",
-    "standard": "17.1.0"
+    "standard": "17.1.0",
+    "clean-webpack-plugin": "4.0.0",
+    "css-loader": "6.8.1",
+    "html-webpack-plugin": "5.5.3",
+    "mini-css-extract-plugin": "2.7.6",
+    "resolve-url-loader": "5.0.0",
+    "sass": "1.67.0",
+    "sass-loader": "13.3.2",
+    "style-loader": "3.3.3",
+    "webpack": "5.88.2",
+    "webpack-cli": "5.1.4"
   },
   "standard": {
     "globals": [
