@@ -49,10 +49,6 @@ extends:
     appTestConfig:
       testFilePath: "./docker-compose.test.yaml"
     appDeployConfig:
-      filepath: "./appConfig"  
-      variableGroups: 
-        - trade-exports-packinglistai-ui-snd1
-        - trade-exports-packinglistai-ui-snd2
-        - trade-exports-packinglistai-ui-snd3
-      variables:
-        - trade-exports-packinglistai-ui-APPINSIGHTS-CONNECTIONSTRING
+      filepath: "./appConfig"
+      filetype: "yaml" 
+
