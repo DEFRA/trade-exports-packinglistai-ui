@@ -1,0 +1,85 @@
+{% extends '_layout.njk' %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      }]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Packing List Upload
+      </h1>
+
+      <h2 class="govuk-heading-m">
+        File upload
+      </h2>
+
+      <form action="/upload" id="file-upload-form" method="post" enctype="multipart/form-data">
+      {{ 
+        govukFileUpload({
+          id: "file-upload",
+          name: "fileUpload",
+          label: {
+            text: "Upload a file"
+          }
+        }) 
+      }}
+      {{
+        govukButton({
+          text: 'Continue',
+          attributes: {
+            id: 'submit'
+          }
+        })
+      }}
+      </form>
+
+      <h2 class="govuk-heading-m">
+        List of uploads
+      </h2>
+
+      {% if fileList | length == 0 %}
+        <p class="govuk-body">No files uploaded yet</p>
+      {% else %}
+        <ul class="govuk-list govuk-list--bullet">
+          {% for file in fileList %}
+            <li><a target="_blank" href="/uploads/{{ file }}" class="govuk-link">{{ file }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Useful links
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a class="govuk-link" href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="govuk-link" href="/packing-list-upload">
+                Packing list upload
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+{% endblock %}

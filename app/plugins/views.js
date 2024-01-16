@@ -32,8 +32,8 @@ module.exports = {
       appVersion: pkg.version,
       assetPath: '/static',
       govukAssetPath: '/assets',
-      serviceName: 'FFC FFD Frontend POC',
-      pageTitle: 'FFC FFD Frontend POC - GOV.UK'
+      serviceName: 'Defra Trade Exports AI PoC',
+      pageTitle: 'Defra Trade Exports AI PoC - GOV.UK'
     }
   }
 }

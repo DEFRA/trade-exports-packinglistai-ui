@@ -17,23 +17,29 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">FFC FFD Frontend POC</h1>
+      <h1 class="govuk-heading-xl">Demo PoC for Trade Exports AI</h1>
 
       <p class="govuk-body">
-        This is a demo application for the technical investigation of patterns and practices
-        in developing production quality containerised, cloud native, microservice based applications
-        within the Future Farming and Countryside Programme (FFC).
+        This is a demo application that shows how we could leverage AI
+        to mine data within trader uploaded packing lists. Packing list
+        data is disparate in that traders upload PDFs/CSVs/XLSs etc in their
+        own format from their own systems. Ideally this would be a pre-determined
+        structure, however, migrating traders over to this would incur too much
+        change. Structured APIs/uploads are the way forward, but for now, we've
+        got unstructured packing lists to deal with.
+      </p>
+
+      <p class="govuk-body">
+        Being able to mine these uploaded packing lists into a structured data
+        schema would enable us to help pre-flag any issues
+        or anomalies to help their throughput and get food to NI citizens more
+        efficiently.
       </p>
 
       {{ govukWarningText({
         text: "This is not a real service and is for demonstration and investigation purposes only.",
         iconFallbackText: "Warning"
       }) }}
-
-
-      <h2 class="govuk-heading-m">Before you start</h2>
-
-      <p class="govuk-body">This is a proof of concept sample application. </p>
     </div>
     <div class="govuk-grid-column-one-third">
       <aside class="app-related-items" role="complementary">
@@ -45,6 +51,11 @@
             <li>
               <a class="govuk-link" href="/">
                 Home
+              </a>
+            </li>
+            <li>
+              <a class="govuk-link" href="/packing-list-upload">
+                Packing list upload
               </a>
             </li>
           </ul>
