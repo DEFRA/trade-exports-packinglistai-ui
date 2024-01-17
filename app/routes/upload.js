@@ -1,9 +1,9 @@
-const fs = require("fs");
-const path = require("path")
+const fs = require('fs')
+const path = require('path')
 
 module.exports = {
-  method: "POST",
-  path: "/upload",
+  method: 'POST',
+  path: '/upload',
   options: {
     payload: {
       maxBytes: 25 * 1000 * 1000,
@@ -18,11 +18,10 @@ module.exports = {
       const filename = payload.fileUpload.hapi.filename
       const data = payload.fileUpload._data
 
-      await fs.promises
-        .writeFile(
-          path.join(process.cwd(), "/app/dist/uploads/") + filename,
-          data
-        )
+      await fs.promises.writeFile(
+        path.join(process.cwd(), '/app/dist/uploads/') + filename,
+        data
+      )
 
       return h.redirect('/packing-list-upload')
     }
