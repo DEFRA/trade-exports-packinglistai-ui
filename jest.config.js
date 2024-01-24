@@ -25,7 +25,7 @@ module.exports = {
       {
         suiteName: 'jest tests',
         outputDirectory: 'test-output',
-        outputName: 'junit.xml'
+        outputName: 'cobertura-coverage.xml'
       }
     ]
   ],
