@@ -16,7 +16,7 @@ module.exports = {
         .readdir(uploadsDir)
         .then(files => files)
         .catch(err => {
-          throw new Error(err)
+          console.log(`ERR: ${err}`)
         })
 
       return h.view('packing-list-upload', { fileList })
