@@ -9,7 +9,7 @@
     "build:watch": "webpack --watch",
     "pretest": "npm run test:lint",
     "test": "jest --runInBand --forceExit",
-    "test:unit": "jest --runInBand --forceExit",
+    "test:unit": "jest --runInBand --forceExit --coverage --coverageReporters=cobertura",
     "test:watch": "jest --coverage=false --onlyChanged --watch --runInBand",
     "test:lint": "standard",
     "test:debug": "node --inspect-brk=0.0.0.0 ./node_modules/jest/bin/jest.js --coverage=false --onlyChanged --watch --runInBand --no-cache",
