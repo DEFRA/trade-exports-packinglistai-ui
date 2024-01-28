@@ -1,12 +1,13 @@
 const fs = require('fs')
 const path = require('path')
+const config = require('../config')
 
 module.exports = {
   method: 'POST',
   path: '/upload',
   options: {
     payload: {
-      maxBytes: 25 * 1000 * 1000,
+      maxBytes: config.maxUploadBytes,
       parse: true,
       multipart: {
         output: 'stream'
