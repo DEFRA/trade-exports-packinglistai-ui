@@ -1,4 +1,4 @@
-let { prompt: promptConfig } = require('../config')
+const config = require('../config')
 
 module.exports = [
   {
@@ -6,7 +6,7 @@ module.exports = [
     path: '/admin',
     options: {
       handler: (_request, h) => {
-        return h.view('admin', { prompt: promptConfig })
+        return h.view('admin', { prompt: config.prompt })
       }
     }
   },
@@ -15,7 +15,7 @@ module.exports = [
     path: '/admin',
     options: {
       handler: (request, h) => {
-        promptConfig = request.payload.prompt
+        config.prompt = request.payload.prompt
         return h.redirect('/admin')
       }
     }

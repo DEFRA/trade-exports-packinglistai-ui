@@ -1,6 +1,5 @@
 const routes = require('../../../../app/routes/admin')
-
-jest.mock('../../../../app/config', () => ({ prompt: 'initial prompt' }))
+const config = require('../../../../app/config')
 
 describe('Admin view test', () => {
   test('should have a GET method', () => {
@@ -17,7 +16,7 @@ describe('Admin view test', () => {
     const route = routes.find(route => route.path === '/admin' && route.method === 'GET')
     const h = { view: jest.fn() }
     route.options.handler({}, h)
-    expect(h.view).toHaveBeenCalledWith('admin', { prompt: 'initial prompt' })
+    expect(h.view).toHaveBeenCalledWith('admin', { prompt: config.prompt })
   })
 
   test('should update the prompt config and redirect for POST /admin', () => {
@@ -25,7 +24,7 @@ describe('Admin view test', () => {
     const h = { redirect: jest.fn() }
     const request = { payload: { prompt: 'new prompt' } }
     route.options.handler(request, h)
-    expect(require('../../../../app/config').prompt).toBe('new prompt')
+    expect(config.prompt).toBe('new prompt')
     expect(h.redirect).toHaveBeenCalledWith('/admin')
   })
 })
