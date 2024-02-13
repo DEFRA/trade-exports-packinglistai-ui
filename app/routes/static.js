@@ -43,6 +43,20 @@ module.exports = [
   },
   {
     method: 'GET',
+    path: '/json/{path*}',
+    options: {
+      handler: {
+        directory: {
+          path: ['app/dist/json']
+        }
+      },
+      cache: {
+        privacy: 'private'
+      }
+    }
+  },
+  {
+    method: 'GET',
     path: '/uploads/{path*}',
     options: {
       handler: {

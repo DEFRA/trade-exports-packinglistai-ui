@@ -9,7 +9,7 @@
     items: [
       {
         text: "Home",
-        href: "#"
+        href: "/"
       }]
   }) }}
 {% endblock %}
@@ -54,7 +54,7 @@
       {% else %}
         <ul class="govuk-list govuk-list--bullet">
           {% for file in fileList %}
-            <li><a target="_blank" href="/uploads/{{ file }}" class="govuk-link">{{ file }}</a></li>
+            <li><a target="_blank" href="/uploads/{{ file }}" class="govuk-link">{{ file }}</a> : <a href="/ai/{{ file }}" class="govuk-link">Push to AI</a></li>
           {% endfor %}
         </ul>
       {% endif %}

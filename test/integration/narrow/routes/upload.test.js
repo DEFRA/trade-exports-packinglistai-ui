@@ -1,9 +1,12 @@
 const fs = require('fs')
-const path = require('path')
+const config = require('../../../../app/config')
 const { method, path: routePath, options } = require('../../../../app/routes/upload')
 
-jest.mock('fs')
-jest.mock('path')
+jest.mock('fs', () => ({
+  promises: {
+    writeFile: jest.fn(() => Promise.resolve())
+  }
+}))
 
 describe('upload', () => {
   test('should have a POST method', () => {
@@ -15,11 +18,7 @@ describe('upload', () => {
   })
 
   test('should handle file upload', async () => {
-    const h = {
-      redirect: jest.fn()
-    }
-
-    const request = {
+    const mockRequest = {
       payload: {
         fileUpload: {
           hapi: {
@@ -30,15 +29,16 @@ describe('upload', () => {
       }
     }
 
-    fs.promises = {
-      writeFile: jest.fn().mockResolvedValue()
+    const mockH = {
+      redirect: jest.fn()
     }
 
-    path.join.mockReturnValue('/app/dist/uploads/')
+    await options.handler(mockRequest, mockH)
 
-    await options.handler(request, h)
-
-    expect(fs.promises.writeFile).toBeCalledWith('/app/dist/uploads/test.txt', Buffer.from('test'))
+    expect(fs.promises.writeFile).toHaveBeenCalledWith(
+      config.uploadsDir + 'test.txt',
+      Buffer.from('test')
+    )
   })
 
   test('should redirect if no filename', async () => {
@@ -81,8 +81,6 @@ describe('upload', () => {
     fs.promises = {
       writeFile: jest.fn().mockRejectedValue(new Error('Test error'))
     }
-
-    path.join.mockReturnValue('/app/dist/uploads/')
 
     await expect(options.handler(request, h)).rejects.toThrow('Test error')
   })

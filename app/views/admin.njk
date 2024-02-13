@@ -10,7 +10,7 @@
     items: [
       {
         text: "Home",
-        href: "#"
+        href: "/"
       }]
   }) }}
 {% endblock %}
@@ -22,7 +22,7 @@
         Admin
       </h1>
 
-      <form action="/admin" method="post">
+      <form action="/admin" method="post" id="admin-prompt-and-upload" enctype="multipart/form-data">
         {{ govukTextarea({
           name: "prompt",
           id: "prompt",
@@ -32,14 +32,29 @@
             isPageHeading: true
           },
           hint: {
-            text: "Put the latest prompt in here. PromptAI seems to work better with Markdown."
+            text: "Put the latest prompt in here. PromptAI works best with Markdown"
           },
           value: prompt
         }) }}
 
+        {{ 
+          govukFileUpload({
+            id: "file-upload",
+            name: "fileUpload",
+            label: {
+              text: "Upload the golden test data",
+              classes: "govuk-label--l",
+              isPageHeading: true
+            },
+            hint: {
+              text: "Upload the latest golden test data here to have the prompt & packing lists validated against"
+            }
+          }) 
+        }}
+
         {{
           govukButton({
-            text: 'Save Prompt',
+            text: 'Save',
             attributes: {
               id: 'submit'
             }

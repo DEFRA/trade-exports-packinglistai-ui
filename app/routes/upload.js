@@ -1,5 +1,4 @@
 const fs = require('fs')
-const path = require('path')
 const config = require('../config')
 
 module.exports = {
@@ -15,8 +14,6 @@ module.exports = {
       output: 'stream'
     },
     handler: async (request, h) => {
-      const uploadsDir = path.join(process.cwd(), '/app/dist/uploads/')
-
       const { payload } = request
       const filename = payload.fileUpload.hapi.filename
       const data = payload.fileUpload._data
@@ -26,7 +23,7 @@ module.exports = {
       }
 
       await fs.promises.writeFile(
-        uploadsDir + filename,
+        config.uploadsDir + filename,
         data
       ).catch(err => {
         throw new Error(err)
