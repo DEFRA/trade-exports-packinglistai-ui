@@ -6,6 +6,7 @@ const routes = [].concat(
   require('../routes/home'),
   require('../routes/static'),
   require('../routes/packing-list-upload'),
+  require('../routes/data-analysis'),
   require('../routes/upload')
 )
 

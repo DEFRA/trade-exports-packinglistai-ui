@@ -1,11 +1,12 @@
 const path = require('path')
 
-// TODO: pending secret hookup
-
 module.exports = {
   maxUploadBytes: 25 * 1000 * 1000,
-  uploadsDir: path.join(process.cwd(), '/app/dist/uploads/'),
+
+  goldenDataDir: path.join(process.cwd(), '/app/dist/golden-test-data/'),
   jsonDir: path.join(process.cwd(), '/app/dist/json/'),
+  uploadsDir: path.join(process.cwd(), '/app/dist/uploads/'),
+
   prompt: `# Heading level 1
 ## Heading level 2`,
   azureResource: '',

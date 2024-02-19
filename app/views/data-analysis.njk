@@ -1,0 +1,58 @@
+{% extends '_layout.njk' %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/table/macro.njk" import govukTable %}
+
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      }]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Data analysis
+      </h1>
+
+      <p class="govuk-body">List of PL rows matched against golden test data</p>
+
+      {{ govukTable({
+        firstCellIsHeader: false,
+        head: [
+          { text: "Business" },
+          { text: "PL number" },
+          { text: "Desc of goods: Human" },
+          { text: "Desc of goods: AI" },
+          { text: "Nature of products: Human" },
+          { text: "Nature of products: AI" },
+          { text: "Treatment type: Human" },
+          { text: "Treatment type: AI" },
+          { text: "CN code: Human" },
+          { text: "CN code: AI" },
+          { text: "Establishment number: Human" },
+          { text: "Establishment number: AI" },
+          { text: "Number of packages: Human" },
+          { text: "Number of packages: AI" },
+          { text: "Net weight (kg): Human" },
+          { text: "Net weight (kg): AI" },
+          { text: "Valid line" },
+          { text: "Data issue" }
+        ],
+        rows: output
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items" role="complementary">
+        {% include './useful-links.njk' %}
+      </aside>
+
+    </div>
+  </div>
+{% endblock %}

@@ -96,8 +96,7 @@ module.exports = {
         const packingListRows = jsonOutput.items
         console.log(`remosID: ${remosID}`)
         console.log(`packingListRows: ${JSON.stringify(packingListRows)}`)
-
-        return h.response(strippedContent).code(200)
+        return h.response(JSON.stringify(jsonOutput, undefined, 2)).code(200)
       } catch (err) {
         console.error(err)
         return h.response(err).code(500)

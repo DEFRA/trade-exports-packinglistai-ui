@@ -1,3 +1,4 @@
+const fs = require('fs')
 const config = require('../config')
 
 module.exports = [
@@ -14,7 +15,15 @@ module.exports = [
     method: 'POST',
     path: '/admin',
     options: {
-      handler: (request, h) => {
+      payload: {
+        maxBytes: config.maxUploadBytes,
+        parse: true,
+        multipart: {
+          output: 'stream'
+        },
+        output: 'stream'
+      },
+      handler: async (request, h) => {
         // Deal with the prompt
         config.prompt = request.payload.prompt
 
@@ -28,13 +37,13 @@ module.exports = [
               Number: packing list ID
 
             Mandatory information:
-              Description of goods
-              Nature of products
-              Type of treatment
-              CN code
-              Establishment number
-              Number of packages
-              Net weight (kg)
+              Description of goods              .items[].description
+              Nature of products                .items[].the_nature_of_products
+              Type of treatment                 .items[].type_of_treatment
+              CN code                           .items[].commodity_code
+              Establishment number              .registration_approval_number
+              Number of packages                .items[].number_of_packages
+              Net weight (kg)                   .items[].total_net_weight_kg
 
             Non mandatory common information:
               Country of origin
@@ -44,6 +53,25 @@ module.exports = [
               Other information
           }
         */
+        const { payload } = request
+        const filename = payload.fileUpload.hapi.filename
+        const data = payload.fileUpload._data
+
+        if (!filename) {
+          return h.redirect('/admin')
+        }
+
+        // If the directory doesn't exist, create it first
+        if (!fs.existsSync(config.goldenDataDir)) {
+          await fs.promises.mkdir(config.goldenDataDir)
+        }
+
+        await fs.promises.writeFile(
+          config.goldenDataDir + 'golden-test-data.csv',
+          data
+        ).catch(err => {
+          throw new Error(err)
+        })
 
         return h.redirect('/admin')
       }
