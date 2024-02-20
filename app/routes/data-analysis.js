@@ -230,37 +230,14 @@ module.exports = {
           { text: item.numberOfPackages.ai },
           { text: item.netWeight.gtd },
           { text: item.netWeight.ai },
-          { text: item.legislationMatch === 0 ? 'Invalid' : 'Valid' },
-          { text: item.dataIssue === 0 ? 'No issues' : 'Issues' }
-
-          // {
-          //   text: (item.natureOfProducts === '' ? 'N/A' : item.natureOfProducts),
-          //   classes: item.natureOfProductsMatch === 0 ? errorClass : ''
-          // },
-          // {
-          //   text: (item.treatmentType === '' ? 'N/A' : item.treatmentType),
-          //   classes: item.treatmentTypeMatch === 0 ? errorClass : ''
-          // },
-          // {
-          //   text: (item.cnCode === '' ? 'N/A' : item.cnCode),
-          //   classes: item.cnCodeMatch === 0 ? errorClass : ''
-          // },
-          // {
-          //   text: item.establishmentNumber,
-          //   classes: item.remosNumberMatch === 0 ? errorClass : ''
-          // },
-          // {
-          //   text: item.numberOfPackages,
-          //   classes: item.numberOfPackagesMatch === 0 ? errorClass : ''
-          // },
-          // {
-          //   text: item.netWeight,
-          //   classes: item.netWeightMatch === 0 ? errorClass : ''
-          // },
-          // {
-          //   text: item.legislationMatch === 0 ? 'Not matched' : 'Matched',
-          //   classes: item.legislationMatch === 0 ? errorClass : ''
-          // }
+          {
+            text: item.legislationMatch === 0 ? 'Invalid' : 'Valid',
+            classes: item.legislationMatch === 0 ? 'govuk-error-table' : ''
+          },
+          {
+            text: item.dataIssue === 0 ? 'No issues' : 'Issues',
+            classes: item.dataIssue === 0 ? '' : 'govuk-error-table'
+          }
         ])
       })
       // return h.response(goldenDataOutput).code(200)

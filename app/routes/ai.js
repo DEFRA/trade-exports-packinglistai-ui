@@ -38,9 +38,6 @@ module.exports = {
       // Model deployed
       const model = openAIModel
 
-      // API version
-      // const apiVersion = apiVersion
-
       // API key
       const apiKey = azureOpenAIKey
 
