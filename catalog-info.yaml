@@ -5,8 +5,25 @@ metadata:
   description: "PoC to show how disparate data in packing lists could be structure using Azure AI"
   annotations:
     github.com/project-slug: Defra/trade-exports-packinglistai-ui
+    dev.azure.com/project: DEFRA-EUTD-EHCO
+    dev.azure.com/build-definition: trade-exports-packinglistai-ui
+    sonarqube.org/project-key: trade-exports-packinglistai-ui
+    grafana/dashboard-selector: "folderTitle == 'Managed Prometheus'"
+    backstage.io/kubernetes-id: trade-exports-packinglistai-ui
+  tags:
+    - node
+    - front-end
+    - internal
+  links:
+    - url: https://github.com/DEFRA/trade-exports-packinglistai-ui
+      title: View repository
+      icon: github
+    - url: https://sonarcloud.io/project/overview?id=trade-exports-packinglistai-ui
+      title: SonarCloud Analysis
+    - url: https://snyk.io/test/github/DEFRA/trade-exports-packinglistai-ui
+      title: Snyk Analysis
 spec:
   type: frontend
   lifecycle: alpha
-  owner: "group:default/trade-exports"
+  owner: "group:default/eutd-exports"
   
