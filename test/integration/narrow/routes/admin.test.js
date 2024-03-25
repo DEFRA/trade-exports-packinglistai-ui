@@ -4,8 +4,10 @@ const config = require('../../../../app/config')
 
 jest.mock('fs', () => ({
   promises: {
+    mkdir: jest.fn(() => Promise.resolve()),
     writeFile: jest.fn(() => Promise.resolve())
-  }
+  },
+  existsSync: jest.fn()
 }))
 
 describe('Admin view test', () => {
@@ -26,9 +28,7 @@ describe('Admin view test', () => {
     expect(h.view).toHaveBeenCalledWith('admin', { prompt: config.prompt })
   })
 
-  test('should update the prompt config and redirect for POST /admin', () => {
-    fs.existsSync.mockReturnValue(false)
-
+  test('should update the prompt config and redirect for POST /admin', async () => {
     const route = routes.find(route => route.path === '/admin' && route.method === 'POST')
     const h = { redirect: jest.fn() }
     const request = {
@@ -40,14 +40,17 @@ describe('Admin view test', () => {
         }
       }
     }
-    route.options.handler(request, h)
 
-    expect(fs.existsSync).toBeCalledWith(expect.any(String))
-    expect(fs.promises.writeFile).toHaveBeenCalledWith(
-      config.goldenDataDir + 'test.csv',
-      Buffer.from('test data')
-    )
+    fs.existsSync.mockReturnValue(false)
+
+    await route.options.handler(request, h)
+
     expect(config.prompt).toBe('new prompt')
     expect(h.redirect).toHaveBeenCalledWith('/admin')
+    expect(fs.promises.mkdir).toHaveBeenCalledWith(config.goldenDataDir)
+    expect(fs.promises.writeFile).toHaveBeenCalledWith(
+      `${config.goldenDataDir}golden-test-data.csv`,
+      expect.any(Buffer)
+    )
   })
 })
