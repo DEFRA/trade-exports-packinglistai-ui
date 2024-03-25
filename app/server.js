@@ -1,8 +1,18 @@
-require('./insights').setup()
-const Hapi = require('@hapi/hapi')
+const hapi = require('@hapi/hapi')
+
 async function createServer () {
-  const server = Hapi.server({
-    port: process.env.PORT
+  const server = hapi.server({
+    port: process.env.PORT,
+    routes: {
+      validate: {
+        options: {
+          abortEarly: false
+        }
+      }
+    },
+    router: {
+      stripTrailingSlash: true
+    }
   })
 
   // Register the plugins
@@ -12,4 +22,5 @@ async function createServer () {
 
   return server
 }
+
 module.exports = createServer

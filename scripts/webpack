@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+docker exec -it trade-exports-packinglistai-ui-development node ./node_modules/webpack-cli/bin/cli.js

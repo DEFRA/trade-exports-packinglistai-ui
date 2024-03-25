@@ -1,0 +1,72 @@
+{% extends '_layout.njk' %}
+
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "/"
+      }]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Admin
+      </h1>
+
+      <form action="/admin" method="post" id="admin-prompt-and-upload" enctype="multipart/form-data">
+        {{ govukTextarea({
+          name: "prompt",
+          id: "prompt",
+          label: {
+            text: "Prompt",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          hint: {
+            text: "Put the latest prompt in here. PromptAI works best with Markdown"
+          },
+          value: prompt
+        }) }}
+
+        {{ 
+          govukFileUpload({
+            id: "file-upload",
+            name: "fileUpload",
+            label: {
+              text: "Upload the golden test data",
+              classes: "govuk-label--l",
+              isPageHeading: true
+            },
+            hint: {
+              text: "Upload the latest golden test data here to have the prompt & packing lists validated against"
+            }
+          }) 
+        }}
+
+        {{
+          govukButton({
+            text: 'Save',
+            attributes: {
+              id: 'submit'
+            }
+          })
+        }}
+      </form>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items" role="complementary">
+        {% include './useful-links.njk' %}
+      </aside>
+
+    </div>
+  </div>
+{% endblock %}

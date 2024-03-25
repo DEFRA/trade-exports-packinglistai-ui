@@ -5,5 +5,20 @@
 - key: APPINSIGHTS_CLOUDROLE
   value: "{{serviceName}}"
 - key: APPINSIGHTS_CONNECTIONSTRING
-  value: "{{servicename}}-APPINSIGHTS-CONNECTIONSTRING" 
-  type: "keyvault"    
+  value: "{{servicename}}-APPINSIGHTS-CONNECTIONSTRING"
+  type: "keyvault"
+- key: AI_API_VERSION
+  value: "{{serviceName}}-AI-API-VERSION"
+  type: "keyvault"
+- key: AI_AZURE_RESOURCE
+  value: "{{serviceName}}-AI-AZURE-RESOURCE"
+  type: "keyvault"
+- key: AI_OPENAI_KEY
+  value: "{{serviceName}}-AI-OPENAI-KEY"
+  type: "keyvault"
+- key: AI_OPENAI_MODEL
+  value: "{{serviceName}}-AI-OPENAI-MODEL"
+  type: "keyvault"
+- key: AI_PROMPT
+  value: "{{serviceName}}-AI-PROMPT"
+  type: "keyvault"

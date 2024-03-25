@@ -10,13 +10,12 @@ module.exports = {
         compile: (src, options) => {
           const template = nunjucks.compile(src, options.environment)
 
-          return (context) => {
-            return template.render(context)
-          }
+          return context => template.render(context)
         },
         prepare: (options, next) => {
           options.compileOptions.environment = nunjucks.configure([
             path.join(options.relativeTo || process.cwd(), options.path),
+            'app/views',
             'node_modules/govuk-frontend/'
           ], {
             autoescape: true
@@ -32,8 +31,8 @@ module.exports = {
       appVersion: pkg.version,
       assetPath: '/static',
       govukAssetPath: '/assets',
-      serviceName: 'FFC FFD Frontend POC',
-      pageTitle: 'FFC FFD Frontend POC - GOV.UK'
+      serviceName: 'Defra Trade Exports AI PoC',
+      pageTitle: 'Defra Trade Exports AI PoC - GOV.UK'
     }
   }
 }

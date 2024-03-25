@@ -41,6 +41,11 @@ Use Docker Compose to run service locally.
 docker-compose up
 ```
 
+If it's the first time you're building this, the volume mounts overwrite the webpack built files, so you need to re-run:
+```
+./scripts/webpack
+```
+
 ## Test structure
 
 The tests have been structured into subfolders of `./test` as per the
