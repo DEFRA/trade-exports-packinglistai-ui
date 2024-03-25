@@ -7,10 +7,9 @@ module.exports = {
   jsonDir: path.join(process.cwd(), '/app/dist/json/'),
   uploadsDir: path.join(process.cwd(), '/app/dist/uploads/'),
 
-  prompt: `# Heading level 1
-## Heading level 2`,
-  azureResource: '',
-  openAIModel: 'gpt-4-turbo',
-  apiVersion: '',
-  azureOpenAIKey: ''
+  prompt: process.env.AI_PROMPT,
+  azureResource: process.env.AI_AZURE_RESOURCE,
+  openAIModel: process.env.AI_OPENAI_MODEL,
+  apiVersion: process.env.AI_API_VERSION,
+  azureOpenAIKey: process.env.AI_OPENAI_KEY
 }
